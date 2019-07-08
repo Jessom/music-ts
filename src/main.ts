@@ -11,8 +11,9 @@ import MusicCellSkeleton from '@/components/Skeleton/MusicCellSkeleton.vue';
 import Loading from '@/components/Loading.vue';
 import * as filters from './filter/index';
 
-Object.keys(filters).forEach((key: string) => {
-  Vue.filter(key, filters[key]);
+const filter = filters as any;
+Object.keys(filter).forEach((key: string): void => {
+  Vue.filter(key, filter[key]);
 });
 
 Vue.config.productionTip = false;

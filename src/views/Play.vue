@@ -48,12 +48,14 @@ export default class Play extends Vue {
 
   private pause() {
     this.paused = true;
-    this.$refs.audio.pause();
+    const audio = this.$refs.audio as any;
+    audio.pause();
   }
 
   private play() {
     this.paused = false;
-    this.$refs.audio.play();
+    const audio = this.$refs.audio as any;
+    audio.play();
   }
 }
 </script>

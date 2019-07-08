@@ -1,5 +1,6 @@
 const path = require('path');
-const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin');
+// const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   /* configureWebpack: (config)=>{
@@ -13,6 +14,14 @@ module.exports = {
       quiet: true,
     })) 
   }, */
+  configureWebpack: {
+    plugins: [
+      new webpack.DllReferencePlugin({
+        context: path.resolve(__dirname, '../'),
+        manifest: require('./public/vender/vender-manifest.json')
+      })
+    ]
+  },
   // css相关配置
   css: {
     // 是否使用css分离插件 ExtractTextPlugin
