@@ -1,0 +1,41 @@
+@keyframes skeleton-loading1 {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes skeleton-loading2 {
+  0%, 100% {
+    width: 30%;
+  }
+
+  50% {
+    width: 100%;
+  }
+}
+
+@keyframes skeleton-loading3 {
+  0%, 100% {
+    width: 100%;
+  }
+
+  50% {
+    width: 30%;
+  }
+}
+
+@keyframes loading {
+  0%, 100% {
+    -webkit-transform: scaley(1);
+    transform: scaley(1)
+  }
+
+  50% {
+    -webkit-transform: scaley(.3);
+    transform: scaley(.3)
+  }
+}

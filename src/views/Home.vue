@@ -1,18 +1,30 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <topbar />
+    <keep-alive v-if='$route.meta.keepAlive'>
+      <router-view class="main" />
+    </keep-alive>
+    <router-view class="main" v-if='!$route.meta.keepAlive' />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Topbar from '@/components/Topbar.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    Topbar,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+}
 </script>
+
+<style lang="scss">
+@import '@/assets/scss/variable.scss';
+.main {
+  padding-top: $navHeight;
+}
+</style>
+

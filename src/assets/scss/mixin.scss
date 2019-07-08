@@ -1,0 +1,70 @@
+@charset "utf-8";
+@import './animate.scss';
+
+@mixin flex {
+  display: flex;
+}
+
+// 左右布局
+@mixin row {
+  @include flex;
+  flex-direction: row;
+}
+
+// 上下布局
+@mixin column {
+  @include flex;
+  flex-direction: column;
+}
+
+// 水平垂直居中
+@mixin center {
+  @include row;
+  justify-content: center;
+  align-items: center;
+}
+
+// 水平方向
+@mixin horizontal($position: center, $items: true) {
+  @include row;
+  justify-content: $position;
+  @if $items {
+    align-items: center;
+  }
+}
+
+// 垂直方向
+@mixin vertical($position: center) {
+  @include column();
+  align-items: $position;
+}
+
+// 省略号
+@mixin ellipsis($line: 1) {
+	overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+@mixin resetUl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin borderBottom($alpha: 0.1, $color: #000, $height: 1px) {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $height;
+    background-color: rgba($color, $alpha);
+    transform: scaleY(.5);
+  }
+}
